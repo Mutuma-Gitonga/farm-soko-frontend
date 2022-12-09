@@ -8,7 +8,7 @@ function Home(props) {
       <h1>Welcome, consumer!</h1>
     );
   } else {
-    return <h1>Please Login or Sign Up</h1>;
+    return <h1>Click Sign Up or Login: Consumers & Farmers Portals Available</h1>;
   }
 }
 
