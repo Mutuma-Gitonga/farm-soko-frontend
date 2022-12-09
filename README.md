@@ -27,7 +27,7 @@
 - Currently a solo pursuit. 
 
 ## Local Machine Test Instructions
-Run ```git clone https://github.com/Mutuma-Gitonga/farm-soko-frontend.git``` on your command line. However, ensure that a NodeJS environment is setup.
+- Run ```git clone https://github.com/Mutuma-Gitonga/farm-soko-frontend.git``` on your command line. However, ensure that a NodeJS environment is setup.
 
 ## Live Deployment
 - FrontEnd: Follow this link: https://farm-soko-frontend.vercel.app/
