@@ -14,40 +14,40 @@ function App() {
   const [signUpLoginAsConsumer, setSignUpLoginAsConsumer] = useState(true);
   
 
-  const farmerAndConsumerLoggedInStates = (farmer, consumer) => {
-      // Set boolean value using farmer logged in status
-      farmer ? setIsFarmer(true) : setIsFarmer(false);
-      // Set boolean value using consumer logged in status
-      consumer ? setIsConsumer(true) : setIsConsumer(false); 
-  }
-
-  useEffect(() => {
-    // allows auto login for farmers
-    // checks if session exists by checking response ok
-    // then sets farmer state to determine.. 
-    // .. if router-dom shall switch to home page or switch to
-    fetch("/farmer").then((res) => {
-      if (res.ok) {
-        res.json().then((farmer) => setFarmer(farmer));
-      }
-    });
-    
-    fetch("/consumer").then((res) => {
-      if (res.ok) {
-        res.json().then((consumer) => setConsumer(consumer));
-      }
-    });
-
-    farmerAndConsumerLoggedInStates(farmer, consumer);
-
-  }, []);
+  // const farmerAndConsumerLoggedInStates = (farmer, consumer) => {
+  //     // Set boolean value using farmer logged in status
+  //     farmer ? setIsFarmer(true) : setIsFarmer(false);
+  //     // Set boolean value using consumer logged in status
+  //     consumer ? setIsConsumer(true) : setIsConsumer(false); 
+  // }
 
   // useEffect(() => {
-  //    // Set boolean value using farmer logged in status
-  //    farmer ? setIsFarmer(true) : setIsFarmer(false);
-  //    // Set boolean value using consumer logged in status
-  //    consumer ? setIsConsumer(true) : setIsConsumer(false); 
-  // },[farmer, consumer])
+  //   // allows auto login for farmers
+  //   // checks if session exists by checking response ok
+  //   // then sets farmer state to determine.. 
+  //   // .. if router-dom shall switch to home page or switch to
+  //   fetch("/farmer").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((farmer) => setFarmer(farmer));
+  //     }
+  //   });
+    
+  //   fetch("/consumer").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((consumer) => setConsumer(consumer));
+  //     }
+  //   });
+
+  //   farmerAndConsumerLoggedInStates(farmer, consumer);
+
+  // }, []);
+
+  useEffect(() => {
+     // Set boolean value using farmer logged in status
+     farmer ? setIsFarmer(true) : setIsFarmer(false);
+     // Set boolean value using consumer logged in status
+     consumer ? setIsConsumer(true) : setIsConsumer(false); 
+  },[farmer, consumer])
 
   // let conditionalRoute;
   let conditionalHomeComponent;
