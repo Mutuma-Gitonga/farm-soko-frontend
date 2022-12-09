@@ -29,7 +29,7 @@ function NavBar(props) {
       <div>
         <Link to="/">Home</Link>
       </div>
-      <div><h1 style={{fontWeight: "bold", color: "green"}}>FarmSoko&#8482;:</h1><p style={{fontWeight: "bold", color: "mediumpurple"}}>A Farmers & Consumers Haven</p></div>
+      <div><h1 style={{fontWeight: "bold", color: "green"}}>FarmSoko&#8482;</h1><p style={{fontWeight: "bold", color: "mediumpurple"}}>A Farmers & Consumers Haven</p></div>
       <div>
         {props.farmerConsumerLoggedInStatus ? (
           <button onClick={handleLogoutClick}>Logout</button>
