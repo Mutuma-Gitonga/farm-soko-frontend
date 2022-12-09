@@ -8,7 +8,7 @@ function Home(props) {
       <h1>Welcome, consumer!</h1>
     );
   } else {
-    return <h1>Click Sign Up or Login: Consumers & Farmers Portals Available</h1>;
+    return <h2 style={{textAlign:"center", color: "mediumpurple"}}>Click Sign Up or Login. <br/>Consumers and Farmers Portals Available</h2>;
   }
 }
 
