@@ -1,15 +1,15 @@
 import React from "react";
-import SearchProduce from "./SearchProduce";
 import AddNewProduceForm from "./AddNewProduceForm";
 import ProducesList from "./ProducesList";
 
-function ProduceContainer({searchProduce, addNewProduce, producesList}) {
+function ProduceContainer({farmerObj, addNewProduce, producesList}) {
   
   return (
     <div>
-      <SearchProduce searchProduce={searchProduce} />
       <AddNewProduceForm addNewProduce={addNewProduce} />
-      <ProducesList producesList={producesList} />
+      <br/>
+      <h3 style={{textAlign: "center"}}>Here Your Posted Produce. You can add more in the form above.</h3>
+      <ProducesList farmerObj={farmerObj} producesList={producesList} />
     </div>
   );
 }
