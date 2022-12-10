@@ -1,60 +1,96 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import ProduceContainer from "./ProduceContainer";
+import AvailableProduce from "./AvailableProduce";
 
 function Home(props) {
-  if (props.farmer) {
-    // const [producesList, setProducesList] = useState([]);
-    // const [updatedProducesList, setUpdatedProducesList] = useState([]);
 
-    // // const [searchChar, setSearchChar] = useState("");
+  const history = useHistory();
 
-    // useEffect(() => {
-    //   fetch("https://farm-soko-api-production.up.railway.app/produce")
-    //     .then((res) => res.json())
-    //       .then(listData => {
-    //         setProducesList(listData)
-    //         setUpdatedProducesList(listData)
-    //         // console.log(listData)
-    //       });
-    // },[]);
+  const [producesList, setProducesList] = useState([]);
+  const [updatedProducesList, setUpdatedProducesList] = useState([]);
 
-    // useEffect(() => {
-    //   setUpdatedProducesList(producesList);
-    // },[producesList]);
+  // const timestamp = Date.now();
+  
+  useEffect(() => {
+    // fetch("https://farm-soko-api-production.up.railway.app/produce")
+    fetch(`https://farm-soko-api-production.up.railway.app/produce`)
+      .then((res) => res.json())
+        .then(listData => {
+          setProducesList(listData)
+          setUpdatedProducesList(listData)
+          // console.log(listData)
+        });
+  },[]);
 
-    // function addNewProduce(newTransactionObj) {
-    //   const updatedTransactions = [...producesList, newTransactionObj];
-    //   setProducesList(updatedTransactions);
-    // }
+  
 
-    // function searchProduce(newSearchString) {
-    //   const newFilteredList = producesList.filter(transaction => {
-    //     if(newSearchString === "") {
-    //       return true;
-    //     } 
-    //     return transaction.description.toLowerCase().split(" ").join("").includes(newSearchString)
-    //   });
+  useEffect(() => {
+    setUpdatedProducesList(producesList);
+  },[producesList]);
 
-    //   setUpdatedProducesList(newFilteredList);
-    // }
+
+  if(props.farmer) {
+
+    history.push('/');
+
+    function addNewProduce(newProduceObj) {
+      const updatedProducesList = [...producesList, newProduceObj];
+      setProducesList(updatedProducesList);
+    }
 
     return (
-      <h2>Welcome, farmer!</h2>
+      <div className="ui raised segment">
+        <div className="ui segment violet inverted">
+          <h2 style={{textAlign: "center", color: "mediumpurple"}}>Welcome, {props.farmer.name}! Your farmer ID is: {props.farmer.id}</h2>
+        </div>
+        <ProduceContainer farmerObj={props.farmer} producesList={updatedProducesList} addNewProduce={addNewProduce} />
+      </div>
+    )    
 
-      // <div className="ui raised segment">
-      //   <div className="ui segment violet inverted">
-      //     <h2>Welcome, farmer!</h2>
-      //   </div>
-      //   <ProduceContainer searchProduce={searchProduce} producesList={updatedProducesList} addNewProduce={addNewProduce} />
-      // </div>
-      
-    );
-  } else if (props.consumer) {
-    return (
-      <h1>Welcome, consumer!</h1>
-    );
   } else {
-    return <h2 style={{textAlign:"center", color: "mediumpurple"}}>Click Sign Up or Login. <br/>Consumers and Farmers Portals Available</h2>;
+    return (
+      <>
+        <h1 style={{color: "mediumpurple"}}>Please Login Or SignUp as a farmer to post your produce.</h1>
+        <h2 style={{textAlign: "center"}}>Contact a farmer to buy any of the produce listed below: </h2>
+        <table style={{border: "2px solid black", marginLeft: "auto",  marginRight: "auto"  }} >
+          <tbody>
+            <tr>
+            <th style={{border: "2px solid black"}}>
+                <h3>ID</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Name</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Quantity</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Units</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Unit Price</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Farmer Name</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Farmer Town</h3>
+              </th>
+              <th style={{border: "2px solid black"}}>
+                <h3>Farmer Phone</h3>
+              </th>
+            </tr>
+            {
+              producesList.map((produce) => (
+                <AvailableProduce key={produce.id} produce={produce} />
+              ))
+            }
+          </tbody>
+        </table>
+      </>
+      
+    )
   }
 }
 
