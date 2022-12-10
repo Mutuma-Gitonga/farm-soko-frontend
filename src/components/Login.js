@@ -40,7 +40,7 @@ function Login(props) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((consumer) => props.setConsumer(consumer));
+        r.json().then((consumer) => props.setFarmer(consumer));
       }
     });
   }
