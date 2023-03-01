@@ -40,6 +40,7 @@
 ## Live Deployment
 - FrontEnd: Follow this link: https://farm-soko-frontend.vercel.app/
 - BackEnd: Follow this link: https://farm-soko-api-production.up.railway.app/
+-
 
 
 
